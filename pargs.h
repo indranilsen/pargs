@@ -1,5 +1,5 @@
-#ifndef PARGS_LIBRARY_H
-#define PARGS_LIBRARY_H
+#ifndef PARGS_PARGS_H
+#define PARGS_PARGS_H
 
 #include <string>
 #include <map>
@@ -27,4 +27,4 @@ namespace pargs_n {
     };
 }
 
-#endif //PARGS_LIBRARY_H
+#endif //PARGS_PARGS_H

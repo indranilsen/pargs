@@ -3,4 +3,4 @@ project(pargs)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_library(pargs library.cpp library.h)
+add_library(pargs pargs.cpp pargs.h)
