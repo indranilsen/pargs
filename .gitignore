@@ -1,0 +1,7 @@
+.idea/
+.idea_modules/
+build/
+out/
+test/libpargs.a
+test/pargs.h
+test/test
