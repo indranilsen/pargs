@@ -15,7 +15,8 @@ namespace pargs_n {
     };
 
     bool verify_expected_arguments(std::map<std::string, std::string>* arguments,
-                                   std::vector<std::string>* expected_arguments);
+                                   std::vector<std::string>* expected_arguments,
+                                   std::map<std::string, functor>* expected_functor_map);
     bool is_argument(char *long_arg);
     pair_t get_argument(char *long_arg);
 
@@ -34,11 +35,16 @@ namespace pargs_n {
             }
         }
 
-        return verify_expected_arguments(&arguments, &expected_arguments);
+        return verify_expected_arguments(&arguments, &expected_arguments, &expected_functor_map);
     }
 
     void pargs::expect(std::string argument) {
         expected_arguments.push_back(argument);
+    }
+
+    void pargs::expect(std::string argument, functor fn) {
+        expected_arguments.push_back(argument);
+        expected_functor_map[argument] = fn;
     }
 
     std::string pargs::get_arg(std::string argument) {
@@ -73,10 +79,19 @@ namespace pargs_n {
     }
 
     bool verify_expected_arguments(std::map<std::string, std::string>* arguments,
-            std::vector<std::string>* expected_arguments) {
+            std::vector<std::string>* expected_arguments,
+            std::map<std::string, functor>* expected_functor_map) {
         for (auto const& expected_arg : *expected_arguments) {
             if (arguments->find(expected_arg) == arguments->end()) {
                 return false;
+            }
+
+            if (expected_functor_map->find(expected_arg) != expected_functor_map->end()) {
+                functor fn = expected_functor_map->at(expected_arg);
+                bool is_valid = fn(arguments->at(expected_arg));
+                if (!is_valid) {
+                    return false;
+                }
             }
         }
 
