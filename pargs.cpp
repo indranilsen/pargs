@@ -74,7 +74,7 @@ namespace pargs_n {
 
     void pargs::print_all_args() {
         for (auto it = arguments.begin(); it != arguments.end(); ++it) {
-            cout << it->first << ": " << it->second << endl;
+            std::cout << it->first << ": " << it->second << endl;
         }
     }
 
