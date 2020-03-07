@@ -90,3 +90,11 @@ testString: hello
 testInteger: 100
 testFunctor: true
 ```
+## Running Unit Tests
+Unit tests are in the `test/` directory. Test binaries are created for each class of tests. These binaries are not 
+built when `pargs` is included as a library in another project (see top level `CMakeLists.txt`). To run the tests:
+1. Build `test/` subdirectory
+2. `cd build/test`
+3. `make test`
+
+This will eventually be replaced as a post build step. Google Test will also be used in place of basic assertions.
