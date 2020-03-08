@@ -1,8 +1,7 @@
-#include "pargs.h"
+#include <pargs/pargs.h>
 
 #include <iostream>
 
-#include <iostream>
 #include <vector>
 #include <map>
 

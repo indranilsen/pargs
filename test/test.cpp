@@ -1,4 +1,4 @@
-#include "pargs.h"
+#include <pargs/pargs.h>
 #include <iostream>
 
 int main(int argc, char** argv) {
